@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Management System</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1 class="text-center mb-4">Employee Management System</h1>
+
+      <button
+        id="add-employee-btn"
+        class="btn btn-primary mb-3"
+        onclick="showForm()"
+      >
+        <i class="fa-solid fa-plus"></i> Add Employee
+      </button>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text"><i class="fas fa-search"></i></span>
+        <input
+          type="text"
+          id="search-input"
+          class="form-control"
+          placeholder="Search by name or department"
+        />
+      </div>
+
+      <div class="table-responsive">
+        <table
+          class="table table-bordered table-hover align-middle text-center"
+        >
+          <thead class="table-dark">
+            <tr>
+              <th>
+                Name
+                <button class="btn btn-link p-0" id="sort-name-btn">
+                  <i class="fas fa-sort"></i>
+                  <!-- Sort icon -->
+                </button>
+              </th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>
+                Department
+                <button class="btn btn-link p-0" id="sort-department-btn">
+                  <i class="fas fa-sort"></i>
+                  <!-- Sort icon -->
+                </button>
+              </th>
+              <th>Created At</th>
+              <th>Updated At</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="employee-table-body">
+            <!-- Employee rows will be dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination Controls -->
+      <nav>
+        <ul class="pagination justify-content-center" id="pagination"></ul>
+      </nav>
+    </div>
+
+    <!-- Employee Form Popup -->
+    <div id="employee-form-popup">
+      <div class="popup-content">
+        <h3 id="form-title">Add Employee</h3>
+        <form id="employee-form">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" required />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" required />
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone</label>
+            <input type="text" class="form-control" id="phone" required />
+          </div>
+          <div class="mb-3">
+            <label for="department" class="form-label">Department</label>
+            <input type="text" class="form-control" id="department" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="button" class="btn btn-secondary" onclick="closeForm()">
+            Cancel
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Delete Confirmation Popup -->
+    <div id="delete-confirmation-popup" style="display: none">
+      <div class="popup-content">
+        <h5>Are you sure you want to delete this employee?</h5>
+        <button
+          class="btn btn-danger"
+          id="confirm-delete-btn"
+          onclick="deleteEmployee()"
+        >
+          Delete
+        </button>
+        <button class="btn btn-secondary" onclick="closeDeleteConfirmation()">
+          Cancel
+        </button>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
