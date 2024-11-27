@@ -125,3 +125,8 @@ Filter employees by name or department.
 ### 7. Pagination:
 
 Allows navigation between pages for
+
+
+### 8. Sort by Name and Department:
+
+Added features to sort by Name and Departmnet with icon button
